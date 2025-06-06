@@ -60,22 +60,24 @@ function aggiornaRisultato() {
 
   const suggerito = compatibili[0];
 
-  // Calcolo nome file PDF in base alla pavimentazione
-  let nomePdf = suggerito.pdf;
-  if (pavimento === "portante") {
-    nomePdf = nomePdf.replace("-scheda.pdf", "s-scheda.pdf");
-  }
+  // Costruzione dinamica nome file PDF
+  const baseNome = suggerito.modello.replace(/\s+/g, "").replace(/\./g, "");
+  const nomePdf = pavimento === "portante"
+    ? `pdf/${baseNome}s-scheda.pdf`
+    : `pdf/${baseNome}-scheda.pdf`;
 
   risultato.innerHTML = `
-    <h2>Modello consigliato: ${suggerito.modello}</h2>
-    <ul>
-      <li><strong>Codice:</strong> ${suggerito.codice}</li>
-      <li><strong>Portata:</strong> ${suggerito.portata_t} ton.</li>
-      <li><strong>Larghezza ponte:</strong> ${suggerito.larghezza_mm} mm</li>
-      <li><strong>Corsa utile:</strong> ${suggerito.corsa_min_mm}–${suggerito.corsa_max_mm} mm</li>
-      <li><strong>Tipo base:</strong> ${suggerito.tipo_base}</li>
-      <li><strong>Bracci:</strong> ${suggerito.bracci}</li>
-      <li><strong>PDF scheda:</strong> <a href="${nomePdf}" target="_blank">Download</a></li>
-    </ul>
+    <div style="background:#fff;padding:1rem;border-radius:8px;box-shadow:0 0 10px rgba(0,0,0,0.05)">
+      <h2>Modello consigliato: ${suggerito.modello}</h2>
+      <ul>
+        <li><strong>Codice:</strong> ${suggerito.codice}</li>
+        <li><strong>Portata:</strong> ${suggerito.portata_t} ton.</li>
+        <li><strong>Larghezza ponte:</strong> ${suggerito.larghezza_mm} mm</li>
+        <li><strong>Corsa utile:</strong> ${suggerito.corsa_min_mm}–${suggerito.corsa_max_mm} mm</li>
+        <li><strong>Tipo base:</strong> ${suggerito.tipo_base}</li>
+        <li><strong>Bracci:</strong> ${suggerito.bracci}</li>
+        <li><strong>PDF scheda:</strong> <a href="${nomePdf}" target="_blank">Download</a></li>
+      </ul>
+    </div>
   `;
 }
