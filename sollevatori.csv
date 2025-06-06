@@ -1,0 +1,11 @@
+Codice,Modello,Portata (t),Altezza min (mm),Altezza max (mm),Interasse colonne (mm),Tipo,Compatibilità Veicoli,Note tecniche
+13120E,C3.2,3.2,2700,2952,2435,Con base,Utilitarie,"M12x180 - 8 bulloni, Spessore minimo 130 mm"
+13120C,C3.2CONFORT,3.2,2700,2952,2435,Con base,Utilitarie,"M12x180 - 8 bulloni, Spessore minimo 130 mm"
+13168,C3.5,3.5,2700,3040,2435,Con base,Utilitarie e SUV,"M16x145 - 10 bulloni, Spessore minimo 170 mm"
+13194,C4,4.0,2700,3040,2435,Con base,Furgoni leggeri,"M16x145 - 10 bulloni, Spessore minimo 170 mm"
+13998,C5.5,5.5,2810,3250,2590,Con base,Furgoni e mezzi pesanti,"M16x220 - 8 bulloni, Spessore minimo 170 mm"
+13988,C5.5WAGON,5.5,2810,3250,2590,Con base,Furgoni lunghi,"M16x220 - 8 bulloni, Bracci lunghi max 1810 mm"
+13120SE,C3.2S,3.2,2700,2952,2435,Senza base,Auto compatte,"M16x145 - 12 bulloni, Spessore minimo 170 mm"
+13120SVS,C3.2SVS,3.2,2700,2952,2435,Senza base,Smart e citycar,"Bracci min. 589 mm, Triplo SVS"
+13194S,C4S,4.0,2700,3040,2435,Senza base,Furgoni leggeri,"Max 1341 mm, ancoraggio triplo"
+13974,C5.5S GLOBAL,5.5,3320,3712,2907,Senza base,"Crafter, Ducato, MB Vito 4x4",Bracci estesi fino a 3180 mm
