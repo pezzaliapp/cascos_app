@@ -1,25 +1,15 @@
 [
   {
-    "codice": "13988",
-    "modello": "C5.5 WAGON",
-    "portata_t": 5.5,
-    "larghezza_mm": 2590,
-    "corsa_min_mm": 920,
-    "corsa_max_mm": 1810,
-    "tipo_base": "Syncro",
-    "bracci": "920\u20131810 mm",
-    "tipologie_veicolo": [
-      "Furgoni lunghi",
-      "4x4",
-      "SUV XL"
-    ],
-    "veicoli_idonei": [
-      "VW Crafter",
-      "Ducato L3",
-      "Vito 4x4",
-      "BMW X5"
-    ],
-    "pdf": "pdf/C5.5WAGON-scheda.pdf"
+    "codice": "13120E",
+    "modello": "C3.2",
+    "portata_t": 3.2,
+    "larghezza_mm": 2435,
+    "corsa_min_mm": 710,
+    "corsa_max_mm": 1050,
+    "tipo_base": "Con base",
+    "bracci": "710–1050 mm",
+    "tipologie_veicolo": ["Utilitarie", "City car"],
+    "pdf": "pdf/C3.2-scheda.pdf"
   },
   {
     "codice": "13194",
@@ -29,36 +19,56 @@
     "corsa_min_mm": 705,
     "corsa_max_mm": 1335,
     "tipo_base": "Con base",
-    "bracci": "705\u20131335 mm",
-    "tipologie_veicolo": [
-      "Auto",
-      "SUV",
-      "Furgoni medi"
-    ],
-    "veicoli_idonei": [
-      "Mercedes Vito",
-      "Ford Transit Custom"
-    ],
+    "bracci": "705–1335 mm",
+    "tipologie_veicolo": ["Auto", "SUV", "Furgoni medi"],
     "pdf": "pdf/C4-scheda.pdf"
   },
   {
-    "codice": "13120E",
-    "modello": "C3.2",
+    "codice": "13988",
+    "modello": "C5.5 WAGON",
+    "portata_t": 5.5,
+    "larghezza_mm": 2590,
+    "corsa_min_mm": 920,
+    "corsa_max_mm": 1810,
+    "tipo_base": "Syncro",
+    "bracci": "920–1810 mm",
+    "tipologie_veicolo": ["Furgoni lunghi", "4x4", "SUV XL"],
+    "pdf": "pdf/C5.5WAGON-scheda.pdf"
+  },
+  {
+    "codice": "13194S",
+    "modello": "C4S",
+    "portata_t": 4.0,
+    "larghezza_mm": 2435,
+    "corsa_min_mm": 705,
+    "corsa_max_mm": 1335,
+    "tipo_base": "Senza base",
+    "bracci": "705–1335 mm",
+    "tipologie_veicolo": ["Auto", "SUV", "Furgoni medi"],
+    "pdf": "pdf/C4s-scheda.pdf"
+  },
+  {
+    "codice": "13120ES",
+    "modello": "C3.2S",
     "portata_t": 3.2,
     "larghezza_mm": 2435,
     "corsa_min_mm": 710,
     "corsa_max_mm": 1050,
-    "tipo_base": "Con base",
-    "bracci": "710\u20131050 mm",
-    "tipologie_veicolo": [
-      "Utilitarie",
-      "City car"
-    ],
-    "veicoli_idonei": [
-      "Fiat Panda",
-      "Smart ForTwo",
-      "Toyota Yaris"
-    ],
-    "pdf": "pdf/C3.2-scheda.pdf"
+    "tipo_base": "Senza base",
+    "bracci": "710–1050 mm",
+    "tipologie_veicolo": ["Utilitarie", "City car"],
+    "pdf": "pdf/C3.2s-scheda.pdf"
+  },
+  {
+    "codice": "13988S",
+    "modello": "C5.5 WAGON S",
+    "portata_t": 5.5,
+    "larghezza_mm": 2590,
+    "corsa_min_mm": 920,
+    "corsa_max_mm": 1810,
+    "tipo_base": "Senza base",
+    "bracci": "920–1810 mm",
+    "tipologie_veicolo": ["Furgoni lunghi", "4x4", "SUV XL"],
+    "pdf": "pdf/C5.5WAGONs-scheda.pdf"
   }
 ]
