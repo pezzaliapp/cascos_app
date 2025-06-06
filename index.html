@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CASCOS Finder</title>
-  <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cascos APP</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Il contenuto verrà generato dinamicamente da app.js -->
+  <h1>Seleziona il sollevatore adatto</h1>
+
+  <!-- Filtro tipo di pavimentazione -->
+  <div class="filtro">
+    <label for="pavimentazione"><strong>Tipo di pavimentazione:</strong></label>
+    <select id="pavimentazione">
+      <option value="portante">Portante</option>
+      <option value="non_portante" selected>Non portante</option>
+    </select>
+  </div>
+
+  <!-- Sezione modelli -->
+  <div class="modelli-container">
+    <div class="modello-card" data-modello="C3.2">Sollevatore C3.2</div>
+    <div class="modello-card" data-modello="C4">Sollevatore C4</div>
+    <div class="modello-card" data-modello="C5.5">Sollevatore C5.5</div>
+  </div>
+
+  <!-- Link alla scheda tecnica -->
+  <div id="scheda-pdf" style="margin-top: 1em;"></div>
+
   <script src="app.js"></script>
 </body>
 </html>
