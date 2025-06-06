@@ -60,7 +60,12 @@ function aggiornaRisultato() {
 
   const suggerito = compatibili[0];
 
-  // Costruzione dinamica nome file PDF
+  // Modello visualizzato
+  const nomeModello = pavimento === "portante"
+    ? suggerito.modello + "s"
+    : suggerito.modello;
+
+  // PDF dinamico
   const baseNome = suggerito.modello.replace(/\s+/g, "").replace(/\./g, "");
   const nomePdf = pavimento === "portante"
     ? `pdf/${baseNome}s-scheda.pdf`
@@ -68,7 +73,7 @@ function aggiornaRisultato() {
 
   risultato.innerHTML = `
     <div style="background:#fff;padding:1rem;border-radius:8px;box-shadow:0 0 10px rgba(0,0,0,0.05)">
-      <h2>Modello consigliato: ${suggerito.modello}</h2>
+      <h2>Modello consigliato: ${nomeModello}</h2>
       <ul>
         <li><strong>Codice:</strong> ${suggerito.codice}</li>
         <li><strong>Portata:</strong> ${suggerito.portata_t} ton.</li>
