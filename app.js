@@ -1,4 +1,3 @@
-// Caricamento dati dal JSON
 let sollevatori = [];
 
 fetch("sollevatori_data.json")
@@ -13,21 +12,23 @@ function renderForm() {
   container.innerHTML = `
     <h1>Consulta Scheda Tecnica Sollevatore</h1>
 
-    <label>Tipo di veicolo:</label>
+    <label for="tipoVeicolo">Tipo di veicolo:</label>
     <select id="tipoVeicolo">
       <option value="">Seleziona...</option>
-      <option value="Utilitarie">Utilitarie</option>
       <option value="City car">City car</option>
+      <option value="Utilitarie">Utilitarie</option>
+      <option value="Auto">Auto</option>
       <option value="SUV">SUV</option>
       <option value="SUV XL">SUV XL</option>
       <option value="Furgoni medi">Furgoni medi</option>
       <option value="Furgoni lunghi">Furgoni lunghi</option>
       <option value="4x4">4x4</option>
+      <option value="Van XXL">Van XXL</option>
     </select>
 
     <br><br>
 
-    <label>Tipo di pavimentazione:</label>
+    <label for="pavimentazione">Tipo di pavimentazione:</label>
     <select id="pavimentazione">
       <option value="non_portante" selected>Non portante</option>
       <option value="portante">Portante</option>
@@ -48,20 +49,21 @@ function aggiornaRisultato() {
   risultato.innerHTML = "";
   if (!tipo) return;
 
-  const compatibili = sollevatori.filter(s => s.tipologie_veicolo.includes(tipo));
+  const compatibili = sollevatori.filter(s =>
+    s.tipologie_veicolo.some(tv => tv.toLowerCase().includes(tipo.toLowerCase()))
+  );
+
   if (compatibili.length === 0) {
-    risultato.innerHTML = `<p>Nessun sollevatore trovato per ${tipo}.</p>`;
+    risultato.innerHTML = `<p>Nessun sollevatore trovato per "${tipo}".</p>`;
     return;
   }
 
   const suggerito = compatibili[0];
-  let nomePdf = suggerito.pdf;
 
-  // Modifica PDF se necessario in base alla pavimentazione
+  // Calcolo nome file PDF in base alla pavimentazione
+  let nomePdf = suggerito.pdf;
   if (pavimento === "portante") {
-    nomePdf = nomePdf.replace(/-scheda\.pdf$/, "s-scheda.pdf");
-  } else {
-    nomePdf = nomePdf.replace(/s-scheda\.pdf$/, "-scheda.pdf");
+    nomePdf = nomePdf.replace("-scheda.pdf", "s-scheda.pdf");
   }
 
   risultato.innerHTML = `
@@ -74,7 +76,6 @@ function aggiornaRisultato() {
       <li><strong>Tipo base:</strong> ${suggerito.tipo_base}</li>
       <li><strong>Bracci:</strong> ${suggerito.bracci}</li>
       <li><strong>PDF scheda:</strong> <a href="${nomePdf}" target="_blank">Download</a></li>
-      <li><strong>Veicoli idonei:</strong> ${suggerito.veicoli_idonei.join(", ")}</li>
     </ul>
   `;
 }
