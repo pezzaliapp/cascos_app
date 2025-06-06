@@ -1,35 +1,56 @@
-let data = [];
-fetch("compatibilita_cascos.csv")
-  .then((res) => res.text())
-  .then((csv) => {
-    const [header, ...rows] = csv.trim().split("\n");
-    const keys = header.split(",");
-    data = rows.map(row => {
-      const values = row.split(",");
-      return Object.fromEntries(keys.map((k, i) => [k, values[i]]));
-    });
+// Caricamento dati dal JSON
+let sollevatori = [];
+
+fetch("sollevatori_data.json")
+  .then((res) => res.json())
+  .then((data) => {
+    sollevatori = data;
+    renderForm();
   });
 
-document.getElementById("searchInput").addEventListener("input", function () {
-  const query = this.value.toLowerCase();
-  const resultsDiv = document.getElementById("results");
-  resultsDiv.innerHTML = "";
-  if (query.length < 2) return;
-  const results = data.filter(d =>
-    d.Marca.toLowerCase().includes(query) || d.Modello.toLowerCase().includes(query)
-  );
-  if (results.length === 0) {
-    resultsDiv.innerHTML = "<p>Nessun veicolo trovato.</p>";
-    return;
-  }
-  results.forEach(r => {
-    let html = `<h3>${r.Marca} ${r.Modello}</h3><ul>`;
-    Object.keys(r).forEach(k => {
-      if (k !== "Marca" && k !== "Modello") {
-        html += `<li>${k}: ${r[k]}</li>`;
-      }
-    });
-    html += "</ul>";
-    resultsDiv.innerHTML += html;
+function renderForm() {
+  const container = document.body;
+  container.innerHTML = `
+    <h1>Consulta Scheda Tecnica Sollevatore</h1>
+    <label>Tipo di veicolo:</label>
+    <select id="tipoVeicolo">
+      <option value="">Seleziona...</option>
+      <option value="Utilitarie">Utilitarie</option>
+      <option value="City car">City car</option>
+      <option value="SUV">SUV</option>
+      <option value="SUV XL">SUV XL</option>
+      <option value="Furgoni medi">Furgoni medi</option>
+      <option value="Furgoni lunghi">Furgoni lunghi</option>
+      <option value="4x4">4x4</option>
+    </select>
+    <div id="risultato"></div>
+  `;
+
+  document.getElementById("tipoVeicolo").addEventListener("change", function () {
+    const tipo = this.value;
+    const risultato = document.getElementById("risultato");
+    risultato.innerHTML = "";
+    if (!tipo) return;
+
+    const compatibili = sollevatori.filter(s => s.tipologie_veicolo.includes(tipo));
+    if (compatibili.length === 0) {
+      risultato.innerHTML = `<p>Nessun sollevatore trovato per ${tipo}.</p>`;
+      return;
+    }
+
+    const suggerito = compatibili[0];
+    risultato.innerHTML = `
+      <h2>Modello consigliato: ${suggerito.modello}</h2>
+      <ul>
+        <li><strong>Codice:</strong> ${suggerito.codice}</li>
+        <li><strong>Portata:</strong> ${suggerito.portata_t} ton.</li>
+        <li><strong>Larghezza ponte:</strong> ${suggerito.larghezza_mm} mm</li>
+        <li><strong>Corsa utile:</strong> ${suggerito.corsa_min_mm}–${suggerito.corsa_max_mm} mm</li>
+        <li><strong>Tipo base:</strong> ${suggerito.tipo_base}</li>
+        <li><strong>Bracci:</strong> ${suggerito.bracci}</li>
+        <li><strong>PDF scheda:</strong> <a href="${suggerito.pdf}" target="_blank">Download</a></li>
+        <li><strong>Veicoli idonei:</strong> ${suggerito.veicoli_idonei.join(", ")}</li>
+      </ul>
+    `;
   });
-});
+}
